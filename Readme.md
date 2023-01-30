@@ -12,7 +12,7 @@ Welcome to our restaurant search website! This website provides users with a pla
 - Save restaurants as favorites for quick access
 
 ## Getting Started
-1. Visit the website at [insert URL here](www.google.com)
+1. Visit the website at [here](www.google.com)
 2. Enter your search criteria (location, cuisine, price range, etc.)
 3. Browse the list of restaurants that match your search
 4. Click on a restaurant to view details, including menu, photos, and reviews
@@ -25,4 +25,4 @@ Welcome to our restaurant search website! This website provides users with a pla
 
 
 ## Conclusion
-We hope our restaurant search website makes it easier for you to find your next dining destination. If you have any feedback or suggestions, please reach out to us at [insert contact email here](www.google.com). Enjoy your meal!
+We hope our restaurant search website makes it easier for you to find your next dining destination. If you have any feedback or suggestions, please reach out to us at [to contact](www.google.com). Enjoy your meal!
