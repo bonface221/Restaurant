@@ -11,6 +11,7 @@ psycopg2 = "*"
 djangorestframework = "*"
 autopep8 = "*"
 django-filter = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
