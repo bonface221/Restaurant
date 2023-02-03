@@ -4,46 +4,43 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./components/home/Home";
 import Card from "./components/card/Card";
+import Country from "./components/countryBased/country";
 
 function App() {
-	const [countrySearch, setCountrySearch] = useState("");
 
 	const url = "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?";
 
-	// useEffect(() => {
-	// 	let axiData = [];
+	useEffect(() => {
+		setInterval(() => {
+			let axiData = [];
 
-	// 	axios.get(url).then(({ data: { entries, pages } }) => {
-	// 		axiData = [...axiData, ...entries];
+			axios.get(url).then(({ data: { entries, pages } }) => {
+				axiData = [...axiData, ...entries];
 
-	// 		let x = 2;
+				let x = 2;
 
-	// 		let timer = setInterval(() => {
-	// 			if (x === pages + 1) {
-	// 				clearInterval(timer);
-	// 				communicateWithBackend(axiData);
-	// 			}
-	// 			(async () => {
-	// 				let response = await myPromise(x);
-	// 				axiData = [...axiData, ...response];
-	// 			})();
-	// 			x++;
-	// 		}, 2000);
-	// 	});
-	// }, []);
+				let timer = setInterval(() => {
+					if (x === pages + 1) {
+						clearInterval(timer);
+						communicateWithBackend(axiData);
+					}
+					(async () => {
+						let response = await myPromise(x);
+						axiData = [...axiData, ...response];
+					})();
+					x++;
+				}, 2000);
+			});
+		},86400000)
+		
+	}, []);
 
 	function communicateWithBackend(arr) {
-		console.log(arr);
+		arr.forEach((d) => {
+			axios.post("http://127.0.0.1:8000/restaurants/", d)
+			.then((res)=>console.log(res))
+		})
 	}
-
-	// console.log(data.length);
-	// useEffect(() => {
-	// 	data.forEach((d) => {
-	// 		axios
-	// 			.post("http://127.0.0.1:8000/restaurants/", d)
-	// 			.then((res) => console.log("r"));
-	// 	});
-	// }, []);
 
 	function myPromise(x) {
 		return new Promise((resolve, reject) => {
@@ -58,7 +55,8 @@ function App() {
 			
 			<Routes>
 				<Route path="/" element={<Home/>} />
-				<Route path="/card" element={<Card/>} />
+				<Route path="/restaurant/:id" element={<Card/>} />
+				<Route path="/restaurant/country/:country" element={<Country/>} />
 			</Routes>
 		
 		</div>
