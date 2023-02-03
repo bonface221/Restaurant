@@ -1,37 +1,49 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/home/Home";
+import Card from "./components/card/Card";
 
 function App() {
-	const [entriesArray, setEntriesArray] = useState([]);
+	const [countrySearch, setCountrySearch] = useState("");
 
 	const url = "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?";
 
-	useEffect(() => {
-		let axiData = [];
+	// useEffect(() => {
+	// 	let axiData = [];
 
-		axios.get(url).then(({ data: { entries, pages } }) => {
-			axiData = [...axiData, ...entries];
+	// 	axios.get(url).then(({ data: { entries, pages } }) => {
+	// 		axiData = [...axiData, ...entries];
 
-			let x = 2;
+	// 		let x = 2;
 
-			let timer = setInterval(() => {
-				if (x === 11) {
-					clearInterval(timer);
-					communicateWithBackend(axiData);
-				}
-				(async () => {
-					let response = await myPromise(x);
-					axiData = [...axiData, ...response];
-				})();
-				x++;
-			}, 2000);
-		});
-	}, []);
+	// 		let timer = setInterval(() => {
+	// 			if (x === pages + 1) {
+	// 				clearInterval(timer);
+	// 				communicateWithBackend(axiData);
+	// 			}
+	// 			(async () => {
+	// 				let response = await myPromise(x);
+	// 				axiData = [...axiData, ...response];
+	// 			})();
+	// 			x++;
+	// 		}, 2000);
+	// 	});
+	// }, []);
 
 	function communicateWithBackend(arr) {
 		console.log(arr);
 	}
+
+	// console.log(data.length);
+	// useEffect(() => {
+	// 	data.forEach((d) => {
+	// 		axios
+	// 			.post("http://127.0.0.1:8000/restaurants/", d)
+	// 			.then((res) => console.log("r"));
+	// 	});
+	// }, []);
 
 	function myPromise(x) {
 		return new Promise((resolve, reject) => {
@@ -43,23 +55,12 @@ function App() {
 
 	return (
 		<div className="App">
-			<h2 className="text-center pt-5">Restaurant Search</h2>
-			<div className="form d-flex justify-content-center">
-				<form className="row mt-5">
-					<div className="col-md-6 col-sm-6 col-xs-sm">
-						<label className="form-label" htmlFor="poststed">
-							Enter Country search
-						</label>
-						<input className="form-control" id="poststed" type="text" />
-					</div>
-					<div className="col-md-6">
-						<label className="form-label" htmlFor="poststed">
-							Search for a restaurant
-						</label>
-						<input className="form-control" id="poststed" type="text" />
-					</div>
-				</form>
-			</div>
+			
+			<Routes>
+				<Route path="/" element={<Home/>} />
+				<Route path="/card" element={<Card/>} />
+			</Routes>
+		
 		</div>
 	);
 }

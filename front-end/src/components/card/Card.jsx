@@ -1,5 +1,9 @@
 function Card() {
-	return <div>Card</div>;
+	return <div style={{
+		textColor:"white"
+	}}>
+		kufa ndethe bro
+	</div>;
 }
 
 export default Card;

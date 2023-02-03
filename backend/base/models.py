@@ -26,7 +26,7 @@ class Restaurant(models.Model):
     total_karakter = models.CharField(max_length=255)
     tema4_no = models.CharField(max_length=255)
     tema4_nn = models.CharField(max_length=255)
-    tema2_n0 = models.CharField(max_length=255)
+    tema2_no = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
     tema2_nn = models.CharField(max_length=255)
 
