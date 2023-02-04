@@ -10,30 +10,29 @@ import Navbar from "./components/navbar/navbar";
 function App() {
 	const url = "https://hotell.difi.no/api/json/mattilsynet/smilefjes/tilsyn?";
 
-	// useEffect(() => {
-	// 	setInterval(() => {
-	// 		let axiData = [];
+	useEffect(() => {
+		setInterval(() => {
+			let axiData = [];
 
-	// 		axios.get(url).then(({ data: { entries, pages } }) => {
-	// 			axiData = [...axiData, ...entries];
+			axios.get(url).then(({ data: { entries, pages } }) => {
+				axiData = [...axiData, ...entries];
 
-	// 			let x = 2;
+				let x = 2;
 
-	// 			let timer = setInterval(() => {
-	// 				if (x === pages + 1) {
-	// 					clearInterval(timer);
-	// 					communicateWithBackend(axiData);
-	// 				}
-	// 				(async () => {
-	// 					let response = await myPromise(x);
-	// 					axiData = [...axiData, ...response];
-	// 				})();
-	// 				x++;
-	// 			}, 2000);
-	// 		});
-	// 	},86400000)
-
-	// }, []);
+				let timer = setInterval(() => {
+					if (x === pages + 1) {
+						clearInterval(timer);
+						communicateWithBackend(axiData);
+					}
+					(async () => {
+						let response = await myPromise(x);
+						axiData = [...axiData, ...response];
+					})();
+					x++;
+				}, 2000);
+			});
+		}, 86400000);
+	}, []);
 
 	function communicateWithBackend(arr) {
 		arr.forEach((d) => {
